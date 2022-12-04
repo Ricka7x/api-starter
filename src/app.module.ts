@@ -11,10 +11,12 @@ import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { configValidationSchema } from './config.schema';
+import { ProfileModule } from './profile/profile.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
+      isGlobal: true,
       envFilePath: '.env',
       validationSchema: configValidationSchema,
     }),
@@ -27,6 +29,7 @@ import { configValidationSchema } from './config.schema';
     PrismaModule,
     UsersModule,
     AuthModule,
+    ProfileModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],

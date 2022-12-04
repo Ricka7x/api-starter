@@ -28,6 +28,8 @@ export class UsersService {
   }
 
   findAll(): Promise<User[]> {
-    return this.prisma.user.findMany();
+    return this.prisma.user.findMany({
+      include: { profile: true },
+    });
   }
 }
